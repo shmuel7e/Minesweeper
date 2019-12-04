@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Minesweeper!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="init()">
+    <div class="container stars twinkling clouds">
+        <h1>Minesweeper</h1>
+        <button class="auto" onclick="autoBuildMode()">Auto </button>
+        <button class="undo" onclick="undo()">Undo!</button>
+        <button class="manual" onclick="manualBuildMode()">Manual </button>
+        <div class="game-over">GAME OVER!!!!
+            <button class="reset-game" onclick="resetGame()"> 😵 </button>
+        </div>
+        <span class="score">2</span>
+        <span class="watch">0:0:00</span>
+        <table id=board>
+        </table>
+        <div class="difficulty-button bouncy">
+            <span class="easy myButton" id=easy onclick="checkDifficulty(this);">EASY </span>
+            <span class="medium myButton" id=medium onclick="checkDifficulty(this);">MEDIUM</span>
+            <span class="expert myButton" id=expert onclick="checkDifficulty(this);">EXPERT</span>
+            <div class="bonus">
+                <span class="hints" onclick="giveHints()"></span>
+                <span class="lives"></span>
+                <div><button class="safe-click" onclick="giveSafeClick()">SAFE CLICK!!</button> </div>
+            </div>
+            <span class="safe-click-all-text"> <span>you have</span>
+            <span class="safe-click-text">x</span>
+            <span>safe clicks left!</span>
+            </span>
+
+        </div>
+        <div class="best-time">Best Time 0:0:0</div>
+        <div class="current-game-mode">
+            <span>Current Game Mode:</span>
+            <span class="current-game-mode"></span>
+        </div>
+    </div>
+    <script src="js/Utils.js">
+    </script>
+    <script src="js/Main.js"></script>
+</body>
+
+</html>

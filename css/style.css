@@ -1,0 +1,589 @@
+BODY {
+    background-color: black;
+    font-family: sans-serif;
+    text-align: center;
+    box-sizing: border-box;
+    color: #DDDDDD;
+}
+
+#board {
+    background-color: lightgray;
+    position: relative;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.safe-click-all-text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 15px;
+    letter-spacing: 0.0000001cm;
+}
+
+#board TR TD {
+    border: 1px solid white;
+    color: #BFBFBF;
+    text-align: center;
+    font-family: 'MS Sans Serif';
+    font-size: 18px;
+    height: 32px;
+    width: 32px;
+    background-color: #BFBFBF;
+    border-bottom: solid #7B7B7B;
+    border-left: solid #ffffff;
+    border-top: solid #ffffff;
+    border-right: solid #7B7B7B;
+}
+
+#board .color0 {
+    font-size: 0;
+}
+
+#board .color1 {
+    font-size: 0;
+}
+
+#board .color2 {
+    font-size: 0;
+}
+
+#board .color3 {
+    font-size: 0;
+}
+
+#board .color4 {
+    font-size: 0;
+}
+
+#board .color5 {
+    font-size: 0;
+}
+
+#board .shown {
+    background: darkgray;
+    color: black;
+    transform: scale(0.97);
+    transition: scale 5s;
+}
+
+#board .shown.mine.color0 {
+    font-size: 15px;
+}
+
+#board .mine {
+    color: transparent;
+}
+
+#board .shown.color1 {
+    color: green;
+    font-size: 15px;
+}
+
+#board .shown.color2 {
+    color: blue;
+    font-size: 15px;
+}
+
+#board .shown.color3 {
+    color: black;
+    font-size: 15px;
+}
+
+#board .shown.color4 {
+    color: purple;
+    font-size: 15px;
+}
+
+#board .shown.color5 {
+    color: khaki;
+    font-size: 15px;
+}
+
+#board .shown.mine {
+    color: gray;
+    background: red;
+}
+
+#board .shown.marked {
+    color: gray;
+}
+
+.hidden {
+    display: none;
+}
+
+#board .marked.mine {
+    color: gray;
+}
+
+#board .markedcolor0.mine {
+    color: gray;
+}
+
+#board .markedcolor1.mine {
+    color: gray;
+}
+
+#board .markedcolor2.mine {
+    color: gray;
+}
+
+#board .markedcolor3.mine {
+    color: gray;
+}
+
+#board .markedcolor4.mine {
+    color: gray;
+}
+
+#board .markedcolor5.mine {
+    color: gray;
+}
+
+.difficulty-button {
+    display: block;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 5px;
+}
+
+#board .safecolor0 {
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+    font-size: 0;
+}
+
+#board .safecolor1 {
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+    font-size: 0;
+}
+
+#board .safecolor2 {
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+    font-size: 0;
+}
+
+#board .safecolor3 {
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+    font-size: 0;
+}
+
+#board .safecolor4 {
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+    font-size: 0;
+}
+
+#board .safecolor5 {
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+    font-size: 0;
+}
+
+.watch {
+    float: center;
+    position: relative;
+    margin-left: 75px;
+    border: solid 2px rgb(85, 8, 8);
+    position: left;
+    font-family: 'Digital Dismay';
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: red;
+    background-color: black;
+    text-align: center;
+    line-height: 1em;
+}
+
+.bonus {
+    cursor: pointer;
+    font-size: 25px;
+    margin: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.current-game-mode {
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    letter-spacing: 0.3cm;
+    background: -webkit-linear-gradient(rgb(204, 40, 94), rgb(172, 169, 25));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.score {
+    float: center;
+    box-sizing: border-box;
+    margin-right: 10px;
+    position: relative;
+    border: solid 2px rgb(85, 8, 8);
+    font-family: 'Digital Dismay';
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: red;
+    background-color: black;
+    text-align: center;
+    line-height: 1em;
+}
+
+.container {
+    background-color: #2f4353;
+    background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
+    backdrop-filter: blur(5px);
+    width: 500px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+.reset-game {
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 5px;
+    font-size: 30px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    background-color: #eae0c2;
+    border: 2px solid #333029;
+    display: inline-block;
+    cursor: pointer;
+    color: #505739;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.reset-game:active {
+    position: relative;
+    top: 1px;
+}
+
+.best-time {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    letter-spacing: 0.3cm;
+    background: -webkit-linear-gradient(rgb(204, 40, 94), rgb(172, 169, 25));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h1 {
+    letter-spacing: 0.4cm;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bouncy {
+    animation: bouncy 5s infinite linear;
+    position: relative;
+}
+
+@keyframes bouncy {
+    0% {
+        top: 0em
+    }
+    40% {
+        top: 0em
+    }
+    43% {
+        top: -0.9em
+    }
+    46% {
+        top: 0em
+    }
+    48% {
+        top: -0.4em
+    }
+    50% {
+        top: 0em
+    }
+    100% {
+        top: 0em;
+    }
+}
+
+.safe-click {
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background: linear-gradient(to bottom right, #E4DB2A, rgb(170, 18, 64));
+    background-color: #eae0c2;
+    border-radius: 15px;
+    border: 2px solid #333029;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.safe-click:hover {
+    background: #E4DB2A;
+    background: linear-gradient(to bottom right, #c4bb1c, #b32134);
+}
+
+.myButton {
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    background-color: #eae0c2;
+    border-radius: 15px;
+    border: 2px solid #333029;
+    display: inline-block;
+    cursor: pointer;
+    color: #505739;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.myButton:hover {
+    background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    background-color: #ccc2a6;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+.auto {
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    background-color: #eae0c2;
+    border-radius: 15px;
+    border: 2px solid #333029;
+    display: inline-block;
+    cursor: pointer;
+    color: #505739;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.auto:hover {
+    background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    background-color: #ccc2a6;
+}
+
+.auto:active {
+    position: relative;
+    top: 1px;
+}
+
+.manual {
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    background-color: #eae0c2;
+    border-radius: 15px;
+    border: 2px solid #333029;
+    display: inline-block;
+    cursor: pointer;
+    color: #505739;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.manual:hover {
+    background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    background-color: #ccc2a6;
+}
+
+.manual:active {
+    position: relative;
+    top: 1px;
+}
+
+.undo {
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background: linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    background-color: #eae0c2;
+    border-radius: 15px;
+    border: 2px solid #333029;
+    display: inline-block;
+    cursor: pointer;
+    color: #505739;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.undo:hover {
+    background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    background-color: #ccc2a6;
+}
+
+.undo:active {
+    position: relative;
+    top: 1px;
+}
+
+.reset-game:hover {
+    background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    background-color: #ccc2a6;
+}
+
+header {
+    background-color: rgba(33, 33, 33, 0.9);
+    color: #ffffff;
+    display: block;
+    font: 14px/1.3 Arial, sans-serif;
+    height: 50px;
+    position: relative;
+    z-index: 5;
+}
+
+h2 {
+    margin-top: 30px;
+    text-align: center;
+}
+
+header h2 {
+    font-size: 22px;
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 80%;
+    text-align: center;
+}
+
+header a,
+a:visited {
+    text-decoration: none;
+    color: #fcfcfc;
+}
+
+@keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+@-webkit-keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+@-moz-keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+@-ms-keyframes move-twink-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -10000px 5000px;
+    }
+}
+
+@keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+@-webkit-keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+@-moz-keyframes move-clouds-back {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+@-ms-keyframes move-clouds-back {
+    from {
+        background-position: 0;
+    }
+    to {
+        background-position: 10000px 0;
+    }
+}
+
+.stars,
+.twinkling,
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.stars {
+    background: #000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    z-index: 0;
+}
+
+.twinkling {
+    background: transparent url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+    z-index: 1;
+    -moz-animation: move-twink-back 200s linear infinite;
+    -ms-animation: move-twink-back 200s linear infinite;
+    -o-animation: move-twink-back 200s linear infinite;
+    -webkit-animation: move-twink-back 200s linear infinite;
+    animation: move-twink-back 200s linear infinite;
+}
+
+.clouds {
+    background: transparent url(http://www.script-tutorials.com/demos/360/images/clouds3.png) repeat top center;
+    z-index: 3;
+    -moz-animation: move-clouds-back 200s linear infinite;
+    -ms-animation: move-clouds-back 200s linear infinite;
+    -o-animation: move-clouds-back 200s linear infinite;
+    -webkit-animation: move-clouds-back 200s linear infinite;
+    animation: move-clouds-back 200s linear infinite;
+}
